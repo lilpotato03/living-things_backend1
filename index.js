@@ -115,27 +115,27 @@ app.post('/login',async(req,res)=>{
     }
 })
 
-app.get('/home',Authenticate,(req,res)=>{
+app.get('/auth',Authenticate,(req,res)=>{
     console.log(req.userdata)
     res.json(req.userdata)
 })
-app.get('/drop_users', async (req,res)=>{
-    try{
-        await db.run('DROP TABLE IF EXISTS users')
-        res.send('Dropped table')
-    }catch(e){
-        console.log(e)
-    }
-})
-app.get('/users',async(req,res)=>{
-    try{
-        const data=await db.all('SELECT * FROM users',[])
-        console.log(data)
-        res.send(data)
-    }catch(er){
-        console.log(er)
-        res.send(er.message)
-    }
-})
+// app.get('/drop_users', async (req,res)=>{
+//     try{
+//         await db.run('DROP TABLE IF EXISTS users')
+//         res.send('Dropped table')
+//     }catch(e){
+//         console.log(e)
+//     }
+// })
+// app.get('/users',async(req,res)=>{
+//     try{
+//         const data=await db.all('SELECT * FROM users',[])
+//         console.log(data)
+//         res.send(data)
+//     }catch(er){
+//         console.log(er)
+//         res.send(er.message)
+//     }
+// })
 
 
